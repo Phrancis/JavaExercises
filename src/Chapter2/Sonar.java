@@ -3,6 +3,7 @@
 ** http://codereview.stackexchange.com/a/82333/42632
 ** As an answer to my question about SoundSpeed and SoundSpeedCalc classes
 */
+package Chapter2;
 
 public class Sonar {
     public enum Medium {
