@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Shape;
 
 public class Triangle extends Shape {
 	private final double a, b, c; // sides

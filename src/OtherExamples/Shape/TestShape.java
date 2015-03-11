@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Shape;
 
 public class TestShape {
 	public static void main(String[] args) {

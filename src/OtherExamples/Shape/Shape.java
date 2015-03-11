@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Shape;
 
 /* nhgrif says:
  * Phrancis ready for inheritance/polymorphism?

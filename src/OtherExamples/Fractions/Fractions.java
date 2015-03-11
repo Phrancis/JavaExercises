@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Fractions;
 
 /*
  * Problem statement: Create a class named Fractions having two integer data members

@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Fractions;
 
 public class TestFractions {
 	public static void main(String[] args) {

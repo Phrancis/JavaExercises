@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Shape;
 
 public class Rectangle extends Shape {
 	private final double width, length; //sides

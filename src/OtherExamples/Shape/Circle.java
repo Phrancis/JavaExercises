@@ -1,4 +1,4 @@
-package OtherExamples;
+package OtherExamples.Shape;
 
 public class Circle extends Shape {
 	private final double radius;
