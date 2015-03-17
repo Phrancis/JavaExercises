@@ -20,16 +20,21 @@
  * and download it over the Internet rather than requiring the file be local.
  */
 
-package textFileReader;
+package com.psychoproductions.concordance;
 
 import java.io.*;
-import java.nio.*;
-import java.util.Scanner;
 
 // path: /Users/francisveilleux-gaboury/Documents/TextFiles/test.txt
 
-public class TextFileReaderTest {
-	public static void main(String[] args) {
-
+public class ConcordanceTest {
+	public static void main(String[] args) throws IOException {
+		FileReader input = new FileReader("/Users/francisveilleux-gaboury/Documents/TextFiles/test.txt");
+		BufferedReader reader = new BufferedReader(input);
+		String line;
+		
+		while ((line = reader.readLine()) != null) {
+			System.out.println(line);
+		}
+		input.close();
 	}
 }
