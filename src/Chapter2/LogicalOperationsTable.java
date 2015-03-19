@@ -1,5 +1,14 @@
 package Chapter2;
 
+
+/* This class is for demonstrating logical operations and prints the following to stdout:
+1st	2nd	AND	OR	XOR	NOT
+true	true	true	true	false	false
+true	false	false	true	true	false
+false	true	false	true	true	true
+false	false	false	false	false	true
+*/
+
 class LogicalOperationsTable {
     
     public static void main(String[] args) {
