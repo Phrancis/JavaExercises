@@ -32,5 +32,5 @@ git branch -d <branch-name>
 #
 ### RESETS
 # Reset to last commit on "origin", i.e., last commit pushed to remote branch
-git reset --hard repositoryname/branchname
-# example: git reset --hard cardshifter/develop
+git reset --hard origin/branchname
+# example: git reset --hard origin/develop
