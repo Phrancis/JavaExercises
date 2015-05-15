@@ -29,4 +29,8 @@ git pull
 # Delete local branches after deleting on remote
 git remote prune origin
 git branch -d <branch-name>
-
+#
+### RESETS
+# Reset to last commit on "origin", i.e., last commit pushed to remote branch
+git reset --hard repositoryname/branchname
+# example: git reset --hard cardshifter/develop
