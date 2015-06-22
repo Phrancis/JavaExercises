@@ -1,0 +1,14 @@
+# Gradle is used to build Cardshifter
+# Here are the most common commands
+#
+# These are run from the same folder as git
+./gradlew clean build
+# build the project
+# options include --detailv --stacktrace --debug 
+# any are added after the build word
+#
+# To build a Zip version with the compiled JAR files
+# Use this:
+./gradlew clean dist
+# the location of the files for Cardshifter are:
+# Cardshifter/build/distributions
