@@ -12,3 +12,6 @@
 ./gradlew clean dist
 # the location of the files for Cardshifter are:
 # Cardshifter/build/distributions
+#
+# Install dependencies
+./gradlew install
