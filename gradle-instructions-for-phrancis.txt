@@ -13,5 +13,5 @@
 # the location of the files for Cardshifter are:
 # Cardshifter/build/distributions
 #
-# Install dependencies
+# Build GDX & install dependencies (on Cardshifter project)
 ./gradlew install
