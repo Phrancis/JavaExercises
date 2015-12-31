@@ -1,12 +1,14 @@
 package Chapter1;
 
 class ForDemo {
+    private static void forLoopPrintVal(int start, int stop) {
+        for( ; start <= stop; start++) {
+            System.out.format("The value is: %d%n", start);
+        }
+        System.out.println("Done!");
+    }
+
 	public static void main(String args[]) {
-		int count;
-		int stop = 10;
-		for(count = 0; count <= stop; count++) {
-			System.out.println("The value of count is: " + count);
-		}
-		System.out.println("Done!");
+        forLoopPrintVal(0, 10);
 	}
 }

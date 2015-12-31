@@ -5,6 +5,6 @@ public class PowerOfTest {
 		PowerOf p = new PowerOf();
 		p.base = 100;
 		p.exponent = 3;
-		System.out.println(p.base + " to the power of " + p.exponent + " equals " + p.getResult());
+		System.out.format("%f to the power of %f equals %f%n", p.base, p.exponent, p.getResult());
 	}
 }

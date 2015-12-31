@@ -1,12 +1,21 @@
-// GallonToLiterTable.java
 package Chapter1;
 
+/**
+ * Iterates through multiple gallon values and prints it with its liter conversion.
+ */
 public class GallonToLiterTable {
-    public static void main(String args[]) {
-        GallonToLiter gallonToLiter = new GallonToLiter();
-        for (double counter = 0; counter <= 100; counter++) {
-            gallonToLiter.gallons = counter / 10;
-            System.out.println(gallonToLiter.gallons + " gal. = " + gallonToLiter.getResult() + " l.");
-		}
-	}
+    public static void printTable (
+            double min,
+            double max,
+            double incrementBetweenValues) {
+        double gallons;
+        for ( ; min <= max; min += incrementBetweenValues) {
+            gallons = min; //* incrementBetweenValues;
+            System.out.format("%f gal. = %f l.%n", gallons, GallonToLiter.convert(gallons));
+        }
+    }
+    // In action:
+    public static void main(String[] args) {
+        GallonToLiterTable.printTable (0, 10, 0.1);
+    }
 }

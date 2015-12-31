@@ -1,10 +1,12 @@
-// GallonToLiter.java
 package Chapter1;
 
+/**
+ * Converts gallon values to their liter equivalent.
+ */
 public class GallonToLiter {
-    final double CONVERSION_RATIO = 3.7854;
-    double gallons;
-    double getResult() {
-    	return gallons * CONVERSION_RATIO;
+    static final double CONVERSION_RATIO = 3.7854;
+
+    public static double convert(double gallons) {
+        return gallons * CONVERSION_RATIO;
     }
 }
