@@ -2,25 +2,34 @@ package Chapter2;
 
 public class ShortCircuitOperators {
 	public static void main(String args[]) {
-		int n = 10, d =2, q;
-		
+		int n = 10;
+		int digits = 2;
+
 		// short-circuit AND && only evaluates second condition if the first is true
-		if(d != 0 && (n % d) == 0) {
-			System.out.println(d + " is a factor of " + n);
+		if(digits != 0 && (n % digits) == 0) {
+			System.out.format("%d is a factor of %d%n", digits, n);
 		}
-		
-		d = 0;
-		
+
+		digits = 0;                                                 //Always false
+
 		// in this case && is used to prevent dividing by zero
-		if(d != 0 && (n % d) == 0) {
-			System.out.println(d + " is a factor of " + n);
+		if (digits != 0 && (n % digits) == 0) {                     //Always false
+			System.out.format("%d is a factor of %d%n", digits, n);
 		} else {
-			System.out.println("cannot divide by " + d);
+			System.out.format("cannot divide %d by %d%n", n, digits);
 		}
-		
+
 		// using the regular AND & operator does not prevent dividing by zero, resulting in error
-		if(d != 0 & (n % d) == 0) {
-			System.out.println(d + " is a factor of " + n);
-		}
+		//// Exception in thread "main" java.lang.ArithmeticException: / by zero
+		try {
+            if (digits != 0 & (n % digits) == 0) {
+                System.out.format("%d is a factor of %d%d%n", n);
+            } else {
+                System.out.format("Avoiding division by zero%n");
+            }
+        } catch (Exception e) {
+            System.out.format("An exception occurred:%n");
+            e.printStackTrace();
+        }
 	}
 }

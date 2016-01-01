@@ -1,18 +1,22 @@
 /*
 ** Credits: @200_success on Code Review
 ** http://codereview.stackexchange.com/a/82333/42632
-** As an answer to my question about SoundSpeed and SoundSpeedCalc classes
+** As an answer to my question.
 */
 package Chapter2;
 
 public class Sonar {
     public enum Medium {
-        AIR(1100);
+        // Values are approximate.
+        AIR_SEA_LEVEL_15C (340.0),
+        AIR_JET_ALTITUDE_N57C (295.0),
+        FRESH_WATER_25C (1497.0),
+        SEA_WATER (1500.0);
 
-        private final double ftPerSec;
+        private final double meterPerSec;
 
-        Medium(double ftPerSec) {
-            this.ftPerSec = ftPerSec;
+        Medium(double meterPerSec) {
+            this.meterPerSec = meterPerSec;
         }
     }
 
@@ -25,17 +29,22 @@ public class Sonar {
     }
 
     public double distance(double seconds) {
-        return medium.ftPerSec * seconds / (isEcho ? 2 : 1);
+        return medium.meterPerSec * seconds / (isEcho ? 2 : 1);
     }
 
     public static void main(String[] args) {
         double seconds = 35.079;
         boolean isEcho = true;
 
-        Sonar sonar = new Sonar(Sonar.Medium.AIR, isEcho);
-        String verb = isEcho ? "echo" : "travel";
-        System.out.printf("The sound took %s seconds to %s and thus the distance is %s feet.\n",
-                          seconds, verb, sonar.distance(seconds));
+        Sonar sonar1 = new Sonar(Sonar.Medium.AIR_SEA_LEVEL_15C, isEcho);
+        String verb1 = isEcho ? "echo" : "travel";
+        System.out.format("The sound took %s seconds to %s and thus the distance is %s meters.%n",
+                seconds, verb1, sonar1.distance(seconds));
+
+        Sonar sonar2 = new Sonar(Sonar.Medium.FRESH_WATER_25C, isEcho);
+        String verb2 = isEcho ? "echo" : "travel";
+        System.out.format("The sound took %s seconds to %s and thus the distance is %s meters.%n",
+                seconds, verb2, sonar2.distance(seconds));
     }
 }
 
