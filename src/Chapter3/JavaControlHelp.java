@@ -19,8 +19,6 @@ public class JavaControlHelp {
         } while (numberOfTries <= MAX_TRIES);
         System.exit(0);
     }
-
-    // TODO add menu items to display
     private static void showSelections() {
         System.out.format(
                 "Help on:%n" +
@@ -30,43 +28,42 @@ public class JavaControlHelp {
                 "  D. `while` control%n" +
                 "  E. `do-while` control%n"
         );
+        ++numberOfTries;
         acquireSelection();
     }
     private static void acquireSelection() {
-        char selection = ' ';
+        char selection;
         try {
             selection = (char) System.in.read();
-        }
-        catch (IOException ioEx) {
+            routeSelectionToHelpItem(selection);
+        } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
-        routeSelectionToHelpItem(selection);
     }
-    // TODO implement a switch() to route to the various help items
     private static void routeSelectionToHelpItem(char selection) {
-        System.out.format("routeSelectionToHelpItem%n");
-        switch (selection) {
+        //System.out.format("routeSelectionToHelpItem%n");
+        switch (Character.toUpperCase(selection)) {
             case 'A':
-                showHelpFor$If();
+                showHelpFor_If();
                 break;
             default:
                 System.out.format("Selection \'%c\' was not recognized. Please try again%n", selection);
-                ++numberOfTries;
-        }
-        //acquireSelection(); //enable after there are actual selections
-    }
 
-    public static void showHelpFor$If() {
+        }
+        showSelections(); //enable after there are actual selections
+    }
+    public static void showHelpFor_If() {
         System.out.format(
-                "`if` control:%n" +
-                "if (condition) {%n" +
-                "    //do something%n" +
-                "} else if (a different condition) {%n" +
-                "    //do a different thing%n" +
-                "} else {%n" +
-                "    //do this if nothing else matches%n" +
-                "}%n"
+                "`if` control structure:%n" +
+                "\tif (condition) {%n" +
+                "\t    //do something%n" +
+                "\t} else if (a different condition) {%n" +
+                "\t    //do a different thing%n" +
+                "\t} else {%n" +
+                "\t    //do this if no other condition matches%n" +
+                "\t}%n"
         );
+        ++numberOfTries;
     }
 
     public static void main (String[] arg) {
