@@ -6,8 +6,7 @@ import java.util.Scanner;
  * 3-1 Make a Java Help program for flow control structures.
  */
 public class JavaControlHelp {
-    public static Scanner charReader = new Scanner(System.in);
-
+    private static Scanner charReader = new Scanner(System.in);
 
     public JavaControlHelp() {
         startJavaControlHelp();
@@ -16,18 +15,18 @@ public class JavaControlHelp {
     private void startJavaControlHelp() {
         System.out.format(
                 "** Welcome to Java Control Help! **%n%n" +
-                "Please choose one of the following to learn more about Java structure:%n%n"
+                "Please choose one of the following to learn more about Java constrol structures:%n%n"
         );
         showSelections();
     }
     private void showSelections() {
         System.out.format(
                 "Help on:%n" +
-                        "\tA. `if/else` control%n" +
-                        "\tB. `switch` control%n" +
-                        "\tC. `for` control%n" +
-                        "\tD. `while` control%n" +
-                        "\tE. `do-while` control%n"
+                "\tA. `if/else` control%n" +
+                "\tB. `switch` control%n" +
+                "\tC. `for` control%n" +
+                "\tD. `while` control%n" +
+                "\tE. `do-while` control%n"
         );
         acquireSelection();
     }
@@ -41,9 +40,13 @@ public class JavaControlHelp {
         }
     }
     private void routeSelectionToHelpItem(char selection) {
+        // TODO add methods for selections B-E
         switch (selection) {
             case 'A':
                 showHelpFor_IfElse();
+                break;
+            case 'B':
+                showHelpFor_Switch();
                 break;
             default:
                 System.out.format("Selection \'%c\' was not recognized. Please try again%n", selection);
@@ -75,8 +78,9 @@ public class JavaControlHelp {
     }
 
     /**
-     * Help about different commands begin.
+     * Methods to display information about different the different structures.
      */
+
     private void showHelpFor_IfElse() {
         System.out.format(
                 "`if/else` control structure:%n" +
@@ -89,7 +93,21 @@ public class JavaControlHelp {
                 "\t}%n"
         );
     }
-    // TODO add help for 2-5
+    private void showHelpFor_Switch() {
+        System.out.format(
+                "Switch control structure:%n" +
+                "\tswitch (expression) {%n" +
+                "\t  case X:%n" +
+                "\t    //do something%n" +
+                "\t    break;%n" +
+                "\t  case Y:%n" +
+                "\t    //do something different%n" +
+                "\t    break;%n" +
+                "\t  default:%n" +
+                "\t    //do this if no other condition matches%n" +
+                "\t}%n"
+        );
+    }
 
     public static void main (String[] arg) {
         JavaControlHelp jch = new JavaControlHelp();
