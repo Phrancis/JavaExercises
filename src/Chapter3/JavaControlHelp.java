@@ -1,58 +1,68 @@
 package Chapter3;
 
+import java.util.Scanner;
 import java.io.IOException;
 
 /**
  * 3-1 Make a Java Help program for flow control structures.
  */
 public class JavaControlHelp {
-    private static int numberOfTries = 1;
-    private static final int MAX_TRIES = 5;
+    public int numberOfTries = 1;
+    public final int MAX_TRIES = 5;
 
-    public static void startJavaControlHelp() {
+
+    public JavaControlHelp() {
+        startJavaControlHelp();
+    }
+
+    private void startJavaControlHelp() {
         System.out.format(
                 "** Welcome to Java Control Help! **%n%n" +
                 "Please choose one of the following to learn more about Java structure:%n%n"
         );
-        do {
-            showSelections();
-        } while (numberOfTries <= MAX_TRIES);
-        System.exit(0);
+        showSelections();
     }
-    private static void showSelections() {
-        System.out.format(
-                "Help on:%n" +
-                "  A. `if` control%n" +
-                "  B. `switch` control%n" +
-                "  C. `for` control%n" +
-                "  D. `while` control%n" +
-                "  E. `do-while` control%n"
-        );
-        ++numberOfTries;
-        acquireSelection();
-    }
-    private static void acquireSelection() {
-        char selection;
-        try {
-            selection = (char) System.in.read();
-            routeSelectionToHelpItem(selection);
-        } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+    private void showSelections() {
+        while (numberOfTries <= MAX_TRIES) {
+            System.out.format(
+                    "Help on:%n" +
+                            "\tA. `if` control%n" +
+                            "\tB. `switch` control%n" +
+                            "\tC. `for` control%n" +
+                            "\tD. `while` control%n" +
+                            "\tE. `do-while` control%n"
+            );
+            acquireSelection();
         }
     }
-    private static void routeSelectionToHelpItem(char selection) {
-        //System.out.format("routeSelectionToHelpItem%n");
+    private void acquireSelection() {
+        char selection;
+        Scanner charReader = new Scanner(System.in);
+        try {
+            selection = charReader.next().charAt(0);
+            routeSelectionToHelpItem(selection);
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+    private void routeSelectionToHelpItem(char selection) {
         switch (Character.toUpperCase(selection)) {
             case 'A':
                 showHelpFor_If();
                 break;
             default:
                 System.out.format("Selection \'%c\' was not recognized. Please try again%n", selection);
-
         }
-        showSelections(); //enable after there are actual selections
+        System.out.println("numberOfTries: " +numberOfTries);
+        ++numberOfTries;
+        showSelections();
     }
-    public static void showHelpFor_If() {
+
+    /**
+     * Help about different commands begin.
+     */
+    private void showHelpFor_If() {
         System.out.format(
                 "`if` control structure:%n" +
                 "\tif (condition) {%n" +
@@ -63,10 +73,10 @@ public class JavaControlHelp {
                 "\t    //do this if no other condition matches%n" +
                 "\t}%n"
         );
-        ++numberOfTries;
+        //++numberOfTries;
     }
 
     public static void main (String[] arg) {
-        startJavaControlHelp();
+        JavaControlHelp jch = new JavaControlHelp();
     }
 }
