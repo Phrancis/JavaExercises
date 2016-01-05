@@ -1,14 +1,12 @@
 package Chapter3;
 
 import java.util.Scanner;
-import java.io.IOException;
 
 /**
  * 3-1 Make a Java Help program for flow control structures.
  */
 public class JavaControlHelp {
-    public int numberOfTries = 1;
-    public final int MAX_TRIES = 5;
+    public static Scanner charReader = new Scanner(System.in);
 
 
     public JavaControlHelp() {
@@ -23,23 +21,19 @@ public class JavaControlHelp {
         showSelections();
     }
     private void showSelections() {
-        while (numberOfTries <= MAX_TRIES) {
-            System.out.format(
-                    "Help on:%n" +
-                            "\tA. `if` control%n" +
-                            "\tB. `switch` control%n" +
-                            "\tC. `for` control%n" +
-                            "\tD. `while` control%n" +
-                            "\tE. `do-while` control%n"
-            );
-            acquireSelection();
-        }
+        System.out.format(
+                "Help on:%n" +
+                        "\tA. `if/else` control%n" +
+                        "\tB. `switch` control%n" +
+                        "\tC. `for` control%n" +
+                        "\tD. `while` control%n" +
+                        "\tE. `do-while` control%n"
+        );
+        acquireSelection();
     }
     private void acquireSelection() {
-        char selection;
-        Scanner charReader = new Scanner(System.in);
         try {
-            selection = charReader.next().charAt(0);
+            char selection = Character.toUpperCase(charReader.next().charAt(0));
             routeSelectionToHelpItem(selection);
         }
         catch (IllegalArgumentException e) {
@@ -47,24 +41,45 @@ public class JavaControlHelp {
         }
     }
     private void routeSelectionToHelpItem(char selection) {
-        switch (Character.toUpperCase(selection)) {
+        switch (selection) {
             case 'A':
-                showHelpFor_If();
+                showHelpFor_IfElse();
                 break;
             default:
                 System.out.format("Selection \'%c\' was not recognized. Please try again%n", selection);
         }
-        System.out.println("numberOfTries: " +numberOfTries);
-        ++numberOfTries;
-        showSelections();
+        lookUpAnother();
+    }
+
+    private void lookUpAnother() {
+        System.out.format("Look up another one? (Y/N)%n");
+        char yesOrNo = 0;
+        try {
+            yesOrNo = Character.toUpperCase(charReader.next().charAt(0));
+        }
+        catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        switch (yesOrNo) {
+            case 'Y':
+                showSelections();
+                break;
+            case 'N':
+                System.out.format("Goodbye.%n");
+                System.exit(0);
+                break;
+            default:
+                System.out.format("Selection \'%c\' not recognized. ", yesOrNo);
+                lookUpAnother();
+        }
     }
 
     /**
      * Help about different commands begin.
      */
-    private void showHelpFor_If() {
+    private void showHelpFor_IfElse() {
         System.out.format(
-                "`if` control structure:%n" +
+                "`if/else` control structure:%n" +
                 "\tif (condition) {%n" +
                 "\t    //do something%n" +
                 "\t} else if (a different condition) {%n" +
@@ -73,8 +88,8 @@ public class JavaControlHelp {
                 "\t    //do this if no other condition matches%n" +
                 "\t}%n"
         );
-        //++numberOfTries;
     }
+    // TODO add help for 2-5
 
     public static void main (String[] arg) {
         JavaControlHelp jch = new JavaControlHelp();
