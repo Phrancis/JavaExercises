@@ -90,6 +90,28 @@ public class GimmeABreak {
         }
         System.out.format("%nAfter i loop");
     }
+    private static void continueWithACondition() {
+        System.out.format("continueWithACondition()%n");
+        for (int i = 0; i < 100; i++) {
+            //Continue (back to outer loop) only if number is NOT even:
+            if (i % 2 != 0) {
+                continue;
+            }
+            System.out.format("%d ", i);
+        }
+    }
+    private static void continueWithALabel() {
+        System.out.format("continueWithALabel()%n");
+        outerLoop: for (int i = 0; i < 10; i++) {
+            System.out.format("%nOuter loop #%d | Inner loop ", i);
+            for (int j = 0; j< 10; j++) {
+                System.out.format("%d ", j);
+                if (j == 4) {
+                    continue outerLoop;
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         System.out.format("GimmeABreak%n");
@@ -102,5 +124,7 @@ public class GimmeABreak {
         breakOutOfNestedLoop();
         breakWithALabel();
         breakWithALabel2();
+        continueWithACondition();
+        continueWithALabel();
     }
 }
