@@ -58,10 +58,10 @@ public class ArrayDemo {
     }
 
     public static void main(String[] args) {
-//        System.out.println("**ArrayDemo**");
-//        squaresArray(13);
-//        minAndMaxInArray(10);
-//        arrayWithInitializer();
+        System.out.println("**ArrayDemo**");
+        //squaresArray(13);
+        minAndMaxInArray(10);
+        //arrayWithInitializer();
         arrayBubbleSort(100);
     }
 }
