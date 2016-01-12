@@ -5,7 +5,6 @@ import java.util.Random;
  */
 public class RandomIntArray {
     static int[] generate(int numOfInts) {
-        int[] randomIntArray = new Random().ints().limit(numOfInts).toArray();
-        return randomIntArray;
+        return new Random().ints().limit(numOfInts).toArray();
     }
 }
