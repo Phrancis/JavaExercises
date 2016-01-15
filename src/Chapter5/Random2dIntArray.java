@@ -18,7 +18,6 @@ public class Random2dIntArray {
         this.random2dIntArray = new int[numberOfInnerArrays][];
         generate();
     }
-
     /**
      * Creates the Random2dIntArray.
      * @return random2dIntArray A shuffled array of arrays of random integers.
@@ -29,7 +28,6 @@ public class Random2dIntArray {
         addRandomInts(random2dIntArray);
         return random2dIntArray;
     }
-
     /**
      * Creates each inner array with a length based on the input parameter numberOfInnerArrays,
      *   which will also be the length of the longest inner array within the outer array.
@@ -40,13 +38,14 @@ public class Random2dIntArray {
             randomIrregularArray[j] = new int[i];
         }
     }
-
     /**
      * Shuffles the indexes of the array to change their order. Fisher–Yates shuffle array function.
      * inspired by: http://stackoverflow.com/a/18456998/3626537
      * @param sorted2dIntArray The array to be shuffled.
      */
     private void shuffle(int[][] sorted2dIntArray) {
+        // Fisher–Yates shuffle array
+        // Inspired by: http://stackoverflow.com/a/18456998/3626537
         int randomIndex;
         int[] temp;
         for (int index = sorted2dIntArray.length - 1; index > 0; index--) {
@@ -68,7 +67,6 @@ public class Random2dIntArray {
             }
         }
     }
-
     /**
      * Renders Random2dIntArray to a String type.
      * @return a String representation of the Random2dIntArray
@@ -85,5 +83,4 @@ public class Random2dIntArray {
         }
         return arrayAsString;
     }
-
 }
