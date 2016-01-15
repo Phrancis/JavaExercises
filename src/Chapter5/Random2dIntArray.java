@@ -9,7 +9,7 @@ public class Random2dIntArray {
     private Random random = new Random();
 
     /**
-     *
+     * Constructor.
      * @param numberOfInnerArrays The number of inner arrays which will be seeded with random integers,
      *                            as well as the length of the longest inner array of random integers.
      */
@@ -42,7 +42,7 @@ public class Random2dIntArray {
     }
 
     /**
-     * Shuffles the indexes of the array to change their order. Fisher–Yates shuffle array function
+     * Shuffles the indexes of the array to change their order. Fisher–Yates shuffle array function.
      * inspired by: http://stackoverflow.com/a/18456998/3626537
      * @param sorted2dIntArray The array to be shuffled.
      */
@@ -69,12 +69,16 @@ public class Random2dIntArray {
         }
     }
 
+    /**
+     * Renders Random2dIntArray to a String type.
+     * @return a String representation of the Random2dIntArray
+     */
     public String toString() {
         String arrayAsString = "";
         for (int outerIdx = 0; outerIdx < random2dIntArray.length; outerIdx++) {
             arrayAsString = arrayAsString.concat(String.format("outer[%d]: ", outerIdx));
             for (int innerIdx = 0; innerIdx < random2dIntArray[outerIdx].length; innerIdx++) {
-                arrayAsString = arrayAsString.concat(String.format("inner[%d]: %d ",
+                arrayAsString = arrayAsString.concat(String.format("[%d]: %d ",
                         innerIdx, random2dIntArray[outerIdx][innerIdx]));
             }
             arrayAsString = arrayAsString.concat(System.lineSeparator());

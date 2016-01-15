@@ -1,7 +1,7 @@
 package Chapter5;
 
 /**
- * Run Random2dIntArray to test it.
+ * Run Random2dIntArray to print to console and view the resulting data.
  */
 public class TestRandom2dIntArray {
     public static void main(String[] args) {
