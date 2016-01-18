@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Create an array of given length which is comprised of inner arrays of random integers.
  */
-public class Random2dIntArray {
+public class RandomJagged2dIntArray {
     int numberOfInnerArrays;
     private int[][] random2dIntArray;
     private Random random = new Random();
@@ -13,19 +13,19 @@ public class Random2dIntArray {
      * @param numberOfInnerArrays The number of inner arrays which will be seeded with random integers,
      *                            as well as the length of the longest inner array of random integers.
      */
-    public Random2dIntArray(int numberOfInnerArrays) {
+    public RandomJagged2dIntArray(int numberOfInnerArrays) {
         this.numberOfInnerArrays = numberOfInnerArrays;
         this.random2dIntArray = new int[numberOfInnerArrays][];
         generate();
     }
     /**
-     * Creates the Random2dIntArray.
+     * Creates the RandomJagged2dIntArray.
      * @return random2dIntArray A shuffled array of arrays of random integers.
      */
     private int[][] generate()  {
         createInnerArrays(random2dIntArray);
-        shuffle(random2dIntArray);
         addRandomInts(random2dIntArray);
+        shuffle(random2dIntArray);
         return random2dIntArray;
     }
     /**
@@ -39,8 +39,7 @@ public class Random2dIntArray {
         }
     }
     /**
-     * Shuffles the indexes of the array to change their order. Fisher–Yates shuffle array function.
-     * inspired by: http://stackoverflow.com/a/18456998/3626537
+     * Shuffles the indexes of the array to change their order.
      * @param sorted2dIntArray The array to be shuffled.
      */
     private void shuffle(int[][] sorted2dIntArray) {
@@ -68,8 +67,8 @@ public class Random2dIntArray {
         }
     }
     /**
-     * Renders Random2dIntArray to a String type.
-     * @return a String representation of the Random2dIntArray
+     * Renders RandomJagged2dIntArray to a String type.
+     * @return a String representation of the RandomJagged2dIntArray
      */
     public String toString() {
         String arrayAsString = "";
