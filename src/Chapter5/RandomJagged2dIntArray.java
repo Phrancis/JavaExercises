@@ -39,7 +39,18 @@ public class RandomJagged2dIntArray {
         }
     }
     /**
-     * Shuffles the indexes of the array to change their order.
+     * Seeds the inner arrays with random integers.
+     * @param randomIrregularArray Iterates over the inner arrays and seeds random integers as values for each index.
+     */
+    private void addRandomInts(int[][] randomIrregularArray) {
+        for (int i = 0; i < randomIrregularArray.length; i++) {
+            for (int j = 0; j < randomIrregularArray[i].length; j++) {
+                randomIrregularArray[i][j] = random.nextInt();
+            }
+        }
+    }
+    /**
+     * Shuffles the indexes of the outer array.
      * @param sorted2dIntArray The array to be shuffled.
      */
     private void shuffle(int[][] sorted2dIntArray) {
@@ -55,21 +66,12 @@ public class RandomJagged2dIntArray {
             sorted2dIntArray[index] = temp;
         }
     }
-    /**
-     * Seeds the inner arrays with random integers.
-     * @param randomIrregularArray Iterates over the inner arrays and seeds random integers as values for each index.
-     */
-    private void addRandomInts(int[][] randomIrregularArray) {
-        for (int i = 0; i < randomIrregularArray.length; i++) {
-            for (int j = 0; j < randomIrregularArray[i].length; j++) {
-                randomIrregularArray[i][j] = random.nextInt();
-            }
-        }
-    }
+
     /**
      * Renders RandomJagged2dIntArray to a String type.
      * @return a String representation of the RandomJagged2dIntArray
      */
+    @Override
     public String toString() {
         String arrayAsString = "";
         for (int outerIdx = 0; outerIdx < random2dIntArray.length; outerIdx++) {
