@@ -13,6 +13,7 @@ public class FiniteArrayQueueDemo {
         System.out.format("finiteArrayQueue size : %d%n", finiteArrayQueue.getSize());
         System.out.println("finiteArrayQueue.enqueue(\"A\")");
         finiteArrayQueue.enqueue("A");
+
         System.out.format("finiteArrayQueue size : %d%n", finiteArrayQueue.getSize());
         System.out.println("finiteArrayQueue.enqueue(\"B\")");
         finiteArrayQueue.enqueue("B");

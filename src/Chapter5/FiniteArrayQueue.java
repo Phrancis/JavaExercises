@@ -14,15 +14,35 @@ public class FiniteArrayQueue implements Queue {
     /**
      * Constructor.
      * <p>
-     * Note that in order for a FiniteArrayQueue to have a "true" capacity of N items,
-     * its array size must be of (N + 1) to account for not being able to overlap
-     * the head and tail pointers of the queue (unless the queue is empty).
+     *     Note that in order for a FiniteArrayQueue to have a "true" capacity of N items,
+     *     its array size must be of (N + 1) to account for not being able to overlap
+     *     the head and tail pointers of the queue (unless the queue is empty).
+     * <p>
+     *     Also note that negative capacity is not supported, therefore any (N < 0) will become (N = 0).
      * @param desiredCapacity : The maximum number of items that can be in the queue
      */
     public FiniteArrayQueue(int desiredCapacity) {
+        if (desiredCapacity < 0) {
+            desiredCapacity = 0;
+        }
         capacity = desiredCapacity + 1;
         queue = new Object[capacity];
         head = tail = 0;
+    }
+
+    /**
+     * Get the Object at head pointer without dequeueing it
+     * @return Object : the Object at head pointer
+     */
+    public Object peekAtHead() {
+        return queue[head];
+    }
+    /**
+     * Get the Object at tail pointer without dequeueing it
+     * @return Object : the Object at tail pointer
+     */
+    public Object peekAtTail() {
+        return queue[tail];
     }
     /**
      * Indicates whether the queue is empty.
@@ -91,5 +111,18 @@ public class FiniteArrayQueue implements Queue {
             head = (head + 1) % capacity;
         }
         return item;
+    }
+    /** Getters */
+    public Object[] getQueue() {
+        return queue;
+    }
+    public int getCapacity() {
+        return capacity - 1;
+    }
+    public int getHead() {
+        return head;
+    }
+    public int getTail() {
+        return tail;
     }
 }
