@@ -10,7 +10,7 @@ public class FiniteArrayQueueTest extends TestCase {
     public FiniteArrayQueueTest(String testName) {
         super(testName);
     }
-
+    /** FiniteArrayQueue method implementations */
     public void testGetQueue() throws Exception {
         FiniteArrayQueue testQueue = new FiniteArrayQueue(2);
         assertNotNull(testQueue.getQueue());
@@ -84,36 +84,112 @@ public class FiniteArrayQueueTest extends TestCase {
         FiniteArrayQueue testQueue = new FiniteArrayQueue(2);
         assertNull(testQueue.peekAtTail());
     }
+    public void testPeekAtTailIsNullUntilEndOfArray() throws Exception {
+        FiniteArrayQueue testQueue = new FiniteArrayQueue(2);
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.enqueue("foo");
+            assertNull(testQueue.peekAtTail());
+        }
+    }
+    public void testPeekAtTailIsNullWithWrapAround() throws Exception {
+        FiniteArrayQueue testQueue = new FiniteArrayQueue(2);
+        //fill in array:
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.enqueue("foo");
+            assertNull(testQueue.peekAtTail());
+        }
+        assertNull(testQueue.peekAtTail());
+        //dequeue, check for null, then enqueue to move tail to next index:
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.dequeue();
+            assertNull(testQueue.peekAtTail());
+            testQueue.enqueue("foo");
+        }
+    }
     public void testPeekAtHeadIsNullUponInstantiation() throws Exception {
         FiniteArrayQueue testQueue = new FiniteArrayQueue(2);
         assertNull(testQueue.peekAtHead());
     }
+    public void testPeekAtHeadHasCorrectValueUntilEndOfArray() throws Exception {
+        FiniteArrayQueue testQueue = new FiniteArrayQueue(3);
+        char ch = 'A';
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.enqueue(ch + i);
+            assertEquals(ch + i, testQueue.peekAtHead());
+            testQueue.dequeue();
+        }
+    }
+    public void testPeekAtHeadHasCorrectValueWithWrapAround() throws Exception {
+        FiniteArrayQueue testQueue = new FiniteArrayQueue(3);
+        char ch = 'A';
+        //fill in array and dequeue to move tail and head to "wrap around":
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.enqueue(ch + i);
+            testQueue.dequeue();
+        }
+        //enqueue to move tail, check value of head, dequeue to move head:
+        for(int i = 0; i < testQueue.getCapacity(); i++) {
+            testQueue.enqueue(ch + i + testQueue.getCapacity());
+            assertEquals(ch + i + testQueue.getCapacity(), testQueue.peekAtHead());
+            testQueue.dequeue();
+        }
+    }
 
-//    public void testPeekAtTailHasCorrectValue() throws Exception {
-//        FiniteArrayQueue testQueue = new FiniteArrayQueue(3);
-//        for(int i = 0; i < 3; i++) {
-//            testQueue.enqueue(i);
-//            assertEquals(i, testQueue.peekAtTail()); //junit.framework.AssertionFailedError: expected:<1> but was:<0>
-//        }
-//    }
+    /** Queue interface method implementations */
     public void testIsEmptyUponInstantiation() throws Exception {
         Queue testQueue = new FiniteArrayQueue(2);
         assertTrue(testQueue.isEmpty());
     }
-
-//    public void testPeekAtTail() throws Exception {
-//        testQueue = new FiniteArrayQueue(2);
-//        Object obj = testQueue.peekAtTail();
-//    }
-
-    public void testIsEmpty() throws Exception {
-
+    public void testIsEmptyAfterTryingToEnqueueWithZeroCapacity() throws Exception {
+        Queue testQueue = new FiniteArrayQueue(0);
+        try {
+            testQueue.enqueue("foo");
+        } catch(QueueFullException e) {
+            //no action
+        }
+        assertTrue(testQueue.isEmpty());
     }
-
-    public void testIsFull() throws Exception {
-
+    public void testIsEmptyAfterEnqueueingAndDequeueingItems() throws Exception {
+        Queue testQueue = new FiniteArrayQueue(3);
+        testQueue.enqueue("foo");
+        testQueue.dequeue();
+        assertTrue(testQueue.isEmpty());
+        testQueue.enqueue("foo");
+        testQueue.enqueue("foo");
+        testQueue.dequeue();
+        testQueue.dequeue();
+        assertTrue(testQueue.isEmpty());
+        testQueue.enqueue("foo");
+        testQueue.enqueue("foo");
+        testQueue.enqueue("foo");
+        testQueue.dequeue();
+        testQueue.dequeue();
+        testQueue.dequeue();
+        assertTrue(testQueue.isEmpty());
     }
-
+    public void testIsNotFullUponInstantiation() throws Exception {
+        Queue testQueue = new FiniteArrayQueue(2);
+        assertFalse(testQueue.isFull());
+    }
+    public void testIsFullOnlyAfterEnqueueingToCapacity() throws Exception {
+        Queue testQueue = new FiniteArrayQueue(3);
+        for(int i = 0; i < 3; i++) {
+            assertFalse(testQueue.isFull());
+            testQueue.enqueue("foo");
+        }
+        assertTrue(testQueue.isFull());
+    }
+    public void testIsNotFullAfterEnqueueingToCapacityThenDequeueing() throws Exception {
+        Queue testQueue = new FiniteArrayQueue(3);
+        for(int i = 0; i < 3; i++) {
+            testQueue.enqueue("foo");
+        }
+        assertTrue(testQueue.isFull());
+        for(int i = 0; i < 3; i++) {
+            testQueue.dequeue();
+            assertFalse(testQueue.isFull());
+        }
+    }
     public void testGetSize() throws Exception {
 
     }

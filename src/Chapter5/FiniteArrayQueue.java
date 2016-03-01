@@ -31,15 +31,19 @@ public class FiniteArrayQueue implements Queue {
     }
 
     /**
-     * Get the Object at head pointer without dequeueing it
+     * Get the Object at head pointer without dequeueing it.
      * @return Object : the Object at head pointer
      */
     public Object peekAtHead() {
         return queue[head];
     }
     /**
-     * Get the Object at tail pointer without dequeueing it
-     * @return Object : the Object at tail pointer
+     * Get null (empty array slot) at tail pointer without queuing (or dequeueing) anything.
+     * <p>
+     *     Note that if the queue logic functions correctly, this should always return null.
+     *     The unit tests check for this in multiple scenarios.
+     * </p>
+     * @return Object : null if there is no Object at the tail, Object otherwise (abnormal behavior)
      */
     public Object peekAtTail() {
         return queue[tail];

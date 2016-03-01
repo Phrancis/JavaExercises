@@ -2,6 +2,8 @@
   <dictionary name="francisveilleux-gaboury">
     <words>
       <w>dequeued</w>
+      <w>dequeueing</w>
+      <w>enqueueing</w>
       <w>regexr</w>
     </words>
   </dictionary>
