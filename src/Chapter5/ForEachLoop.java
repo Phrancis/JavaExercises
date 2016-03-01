@@ -32,5 +32,18 @@ public class ForEachLoop {
             }
         }
 
+        // Breaking out of ForEach loop
+        System.out.println("Breaking out of ForEach loop:");
+        int numToSearchFor = 5;
+        boolean found = false;
+        for (int n : nums) {
+            if(n == numToSearchFor) {
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            System.out.format("Found %d!%n", numToSearchFor);
+        }
     }
 }
