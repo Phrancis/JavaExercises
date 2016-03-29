@@ -47,6 +47,17 @@ public class StringOperations {
         idx = str2.lastIndexOf("one");
         System.out.printf("Last index of \"one\": %d%n", idx);
 
+        // substring
+        System.out.println("substring()...");
+        str1 = "Java makes the web move";
+        idx = 5;
+        int len = 18;
+        str2 = str1.substring(idx);
+        str3 = str1.substring(idx, len);
+        System.out.printf("Original: %s%n", str1);
+        System.out.printf("Substring idx %d: %s%n", idx, str2);
+        System.out.printf("Substring idx %d, len %d: %s%n", idx, len, str3);
+
         // concatenation
         System.out.println("concatenation...");
         str1 = "One";
@@ -54,5 +65,21 @@ public class StringOperations {
         str3 = "Three";
         String strConcat = str1 + str2 + str3;
         System.out.println("str1 + str2 + str3 = " + strConcat);
+
+        // string switch
+        System.out.println("String switch (available since JDK 7)...");
+        str1 = "cancel";
+        switch(str1){
+            case "continue":
+                System.out.println("Continuing");
+                break;
+            case "cancel":
+                System.out.println("Cancelling");
+                break;
+            default:
+                System.out.println("unrecognized");
+                break;
+        }
+
     }
 }
