@@ -12,6 +12,8 @@ package Chapter5;
  *      >>> : unsigned shift right
  *      <<  : shift left
  *      ~   : one's complement (unary NOT)
+ *
+ * For a related application, see the ShowBits class in this chapter package.
  */
 public class BitwiseOperators {
     public static void main(String[] args) {
@@ -19,6 +21,17 @@ public class BitwiseOperators {
         bitwiseAND2();
         bitwiseOR();
         bitwiseXOR();
+        bitwiseNOT();
+        bitwiseShift();
+    }
+
+    static void printBit(int val, int t) {
+        if((val & t) != 0) {
+            System.out.print("1 ");
+        }
+        else {
+            System.out.print("0 ");
+        }
     }
 
     static void bitwiseAND1() {
@@ -49,8 +62,8 @@ public class BitwiseOperators {
         int t;
         byte val = 123;
         for (t = 128; t > 0; t /= 2) {
-            if ((val & t) != 0) System.out.print("1 ");
-            else System.out.print("0 ");
+            // See printBit method for the AND logic
+            printBit(val, t);
         }
         System.out.println();
     }
@@ -85,7 +98,7 @@ public class BitwiseOperators {
         String msg = "I haz a seekrit!";
         String encMsg = "";
         String decMsg = "";
-        int key = 84;
+        int key = 666;
         System.out.println("Original message: " + msg);
 
         //this encodes the message:
@@ -94,10 +107,55 @@ public class BitwiseOperators {
         }
         System.out.println("Encoded message: " + encMsg);
 
-        //this decodes the messageL
+        //this decodes the message:
         for(int i = 0; i < msg.length(); i++) {
             decMsg = decMsg + (char) (encMsg.charAt(i) ^ key);
         }
         System.out.println("Decoded message: " + decMsg);
+    }
+
+    static void bitwiseNOT() {
+        /**
+         * The unary one's complement (NOT) operator reverses the state of all the bits in the operand.
+         */
+        System.out.println("Reverse state of all bits with bitwise NOT...");
+        byte b = -34;
+        for(int t = 128; t > 0; t /= 2) {
+            printBit(b, t);
+        }
+        System.out.println();
+        // reverse all bits:
+        b = (byte) ~b;
+        for(int t = 128; t > 0; t /= 2) {
+            printBit(b, t);
+        }
+        System.out.println();
+    }
+
+    static void bitwiseShift() {
+        /**
+         * Demonstrate the shift << and >> operators.
+         */
+        System.out.println("Demonstrate the shift << and >> operators...");
+        System.out.println("Left shift << 1");
+        int val = 1;
+        for(int i = 0; i < 8; i++) {
+            for(int t= 128; t > 0; t /= 2) {
+                printBit(val, t);
+            }
+            System.out.println();
+            // left shift:
+            val = val << 1;
+        }
+        System.out.println("Right shift >> 1");
+        val = 128;
+        for(int i = 0; i < 8; i++) {
+            for(int t= 128; t > 0; t /= 2) {
+                printBit(val, t);
+            }
+            System.out.println();
+            // right shift:
+            val = val >> 1;
+        }
     }
 }
