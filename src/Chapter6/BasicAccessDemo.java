@@ -12,7 +12,7 @@ public class BasicAccessDemo {
         System.out.println("alpha is " + obj.getAlpha());
 
         // You cannot access alpha like this because alpha is private:
-        // obj.alpha = 10;
+        //obj.alpha = 10; //Error: java: alpha has private access in Chapter6.BasicAccess
 
         // These are OK because beta and gamma are not private:
         obj.beta = 88;
