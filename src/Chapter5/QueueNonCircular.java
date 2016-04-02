@@ -16,7 +16,7 @@ public class QueueNonCircular {
      * Constructor.
      * @param size the maximum size of the queue.
      */
-    QueueNonCircular(int size) {
+    public QueueNonCircular(int size) {
         // Allocate memory for the queue:
         queue = new char[size];
         putIx = getIx = 0;
