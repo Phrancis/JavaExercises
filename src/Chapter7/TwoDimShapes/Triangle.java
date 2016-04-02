@@ -9,7 +9,7 @@ public class Triangle extends TwoDimShape {
     /**
      * Constructs a triangle two-dimensional shape with no arguments.
      */
-    Triangle() { }
+    Triangle() { super(); }
 
     /**
      * Constructs a triangle two-dimensional shape.
@@ -19,6 +19,15 @@ public class Triangle extends TwoDimShape {
      */
     Triangle(String style, double width, double height) {
         super(width, height);
+        this.style = style;
+    }
+
+    /**
+     * Constructs a triangle two-dimensional shape of equal length sides.
+     * @param sides
+     */
+    Triangle(String style, double sides) {
+        super(sides);
         this.style = style;
     }
 
@@ -62,5 +71,10 @@ public class Triangle extends TwoDimShape {
         t3.showStyle();
         t3.showDims();
         System.out.println("Area: " + t3.area());
+        Triangle t4 = new Triangle("regular", 6);
+        System.out.println("Info about t4:");
+        t4.showStyle();
+        t4.showDims();
+        System.out.println("Area: " + t4.area());
     }
 }

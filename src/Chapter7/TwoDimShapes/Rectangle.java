@@ -7,7 +7,7 @@ public class Rectangle extends TwoDimShape {
     /**
      * Constructs a rectangle two-dimensional shape with no arguments.
      */
-    Rectangle() { }
+    Rectangle() { super(); }
 
     /**
      * Constructs a rectangle two-dimensional shape.

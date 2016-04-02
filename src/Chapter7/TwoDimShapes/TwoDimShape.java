@@ -10,7 +10,9 @@ public abstract class TwoDimShape {
     /**
      * Constructs a two-dimensional shape. with no arguments.
      */
-    TwoDimShape() { }
+    TwoDimShape() {
+        width = height = 0;
+    }
 
     /**
      * Constructs a two-dimensional shape.
@@ -20,6 +22,14 @@ public abstract class TwoDimShape {
     TwoDimShape(double width, double height) {
         this.width = width;
         this.height = height;
+    }
+
+    /**
+     * Constructs a two-dimensional shape of equal sides.
+     * @param sides the length of the sides
+     */
+    TwoDimShape(double sides) {
+        width = height = sides;
     }
 
     /**
