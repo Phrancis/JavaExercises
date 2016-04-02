@@ -43,7 +43,7 @@ public abstract class Vehicle {
      * @return the amount of fuel needed (in gallons)
      */
     double fuelNeeded(double miles) {
-        return mpg * miles;
+        return mpg / miles;
     }
 
     // Accessor methods:
