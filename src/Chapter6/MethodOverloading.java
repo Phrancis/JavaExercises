@@ -1,7 +1,8 @@
 package Chapter6;
 
 /**
- * This class demonstrates method overloading.
+ * This class demonstrates method overloading, where multiple methods by the same name can be declared
+ * and be used as separate methods depending on the arguments passed to it.
  */
 public class MethodOverloading {
     MethodOverloading() { }
@@ -32,5 +33,12 @@ public class MethodOverloading {
         m.overload(3.14159);
         m.overload("Hello");
         m.overload(m);
+        // Certain types are converted automatically and this also applies to overloading:
+        byte b = 99;
+        short s = 10;
+        float f = 0.99F;
+        m.overload(b);  // convert to int
+        m.overload(s);  // convert to int
+        m.overload(f);  // convert to double
     }
 }
