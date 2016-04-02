@@ -1,7 +1,7 @@
 package Chapter7.Vehicles;
 
 /**
- * Created by francisveilleux-gaboury on 4/2/16.
+ * Truck vehicle type.
  */
 public class Truck extends Vehicle {
     private double cargoCapacity;

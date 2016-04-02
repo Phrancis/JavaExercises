@@ -1,7 +1,7 @@
 package Chapter7.Vehicles;
 
 /**
- * Created by francisveilleux-gaboury on 4/2/16.
+ * Offroad truck type.
  */
 public class Offroad extends Truck {
     double groundClearance;
@@ -47,7 +47,7 @@ public class Offroad extends Truck {
         jeep.setFuelCapacity(10);
         jeep.setMpg(18);
         jeep.setCargoCapacity(1000);
-        jeep.setGroundClearance(2.0);
+        jeep.setGroundClearance(24);
         jeep.loadCargo(200);
         System.out.println("Info about jeep:");
         System.out.print(jeep.toString());
@@ -55,8 +55,9 @@ public class Offroad extends Truck {
         System.out.printf("Fuel needed for %f miles: %f gals.%n", range, jeep.fuelNeeded(range));
         System.out.println("-----");
 
-        Offroad buggy = new Offroad(1, 6, 27, 50, 1.2);
+        Offroad buggy = new Offroad(1, 6, 27, 50, 14);
         buggy.loadCargo(20);
+        System.out.printf("Clearance: %f inches%n", buggy.getGroundClearance());
         System.out.println("Info about buggy:");
         System.out.print(buggy.toString());
         System.out.printf("Range: %f miles%n", buggy.getRange());
