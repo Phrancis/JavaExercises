@@ -1,12 +1,12 @@
 package Chapter7.TwoDimShapes;
 
 /**
- * Extends TwoDimShape as Triangle.
+ * Extends TwoDimShape to Triangle.
  */
 public class Triangle extends TwoDimShape {
     String style;
     double area() {
-        return (width * height) / 2;
+        return (getWidth() * getHeight()) / 2;
     }
     void showStyle() {
         System.out.println("Triangle is " + style);
@@ -16,11 +16,11 @@ public class Triangle extends TwoDimShape {
         Triangle t1 = new Triangle();
         Triangle t2 = new Triangle();
         // All members of Triangle are available to Triangle, including those inherited from TwoDimShape:
-        t1.width = 4.0;
-        t1.height = 4.0;
+        t1.setWidth(4);
+        t1.setHeight(4);
         t1.style = "filled";
-        t2.width = 8.0;
-        t2.height = 12.0;
+        t2.setWidth(8);
+        t2.setHeight(12);
         t2.style = "outlined";
         // Same goes for member methods:
         System.out.println("Info about t1:");
