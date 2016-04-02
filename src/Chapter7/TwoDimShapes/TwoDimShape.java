@@ -33,6 +33,12 @@ public abstract class TwoDimShape {
     }
 
     /**
+     * The area of a shape must be implemented by subclasses.
+     * @return the area of the shape
+     */
+    abstract double area();
+
+    /**
      * Prints dimensions of the shape to stdout.
      */
     void showDims() {
