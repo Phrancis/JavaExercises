@@ -6,13 +6,29 @@ package Chapter7.Vehicles;
 public class Offroad extends Truck {
     double groundClearance;
 
+    /**
+     * Constructs an offroad vehicle with no arguments.
+     */
     Offroad() {
         super();
         groundClearance = 0;
-    };
+    }
+
+    /**
+     * Constructs an offroad vehicle.
+     * @param passengers number of allowed passengers
+     * @param fuelCapacity maximum amount (in gallons) the offroad can hold in its fuel tank
+     * @param mpg number of miles the offroad can travel per gallon of fuel
+     * @param cargoCapacity the amount of cargo the offroad can carry (in pounds)
+     * @param groundClearance the ground clearance (in inches) of the offroad
+     */
     Offroad(int passengers, double fuelCapacity, double mpg, double cargoCapacity, double groundClearance) {
         super(passengers, fuelCapacity, mpg, cargoCapacity);
         this.groundClearance = groundClearance;
+    }
+    @Override
+    public String toString() {
+        return String.format("%sGround clearance: %f inches%n", super.toString(), groundClearance);
     }
 
     public double getGroundClearance() {
