@@ -1,17 +1,16 @@
 package Chapter8.Interfaces.CharQueue;
 
 /**
- * Implements ICharQueue.
+ * A standard queue that is of a fixed size and can be exhausted.
  */
-public class CharQueue implements ICharQueue {
+public class FixedCharQueue implements ICharQueue {
     private char[] queue;
     private int getIx;
     private int putIx;
 
-    CharQueue(int size) {
+    FixedCharQueue(int size) {
         this.queue = new char[size];
-        this.getIx = 0;
-        this.putIx = 0;
+        this.getIx = this.putIx = 0;
     }
 
     /**
