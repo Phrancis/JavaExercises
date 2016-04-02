@@ -4,8 +4,8 @@ package Chapter6;
  * This class demonstrates method overloading, where multiple methods by the same name can be declared
  * and be used as separate methods depending on the arguments passed to it.
  */
-public class MethodOverloading {
-    MethodOverloading() { }
+public class OverloadingMethods {
+    OverloadingMethods() { }
 
     void overload() {
         System.out.println("No arguments.");
@@ -22,11 +22,11 @@ public class MethodOverloading {
     void overload(String s) {
         System.out.printf("1 string argument: %s%n", s);
     }
-    void overload(MethodOverloading obj) {
+    void overload(OverloadingMethods obj) {
         System.out.println("1 Object argument: " + obj);
     }
     public static void main(String[] args) {
-        MethodOverloading m = new MethodOverloading();
+        OverloadingMethods m = new OverloadingMethods();
         m.overload();
         m.overload(42);
         m.overload(42, 99);
