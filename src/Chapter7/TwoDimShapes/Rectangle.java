@@ -4,9 +4,32 @@ package Chapter7.TwoDimShapes;
  * Extends TwoDimShape to Rectangle.
  */
 public class Rectangle extends TwoDimShape {
+    /**
+     * Constructs a rectangle two-dimensional shape with no arguments.
+     */
+    Rectangle() { }
+
+    /**
+     * Constructs a rectangle two-dimensional shape.
+     * @param width the width of the rectangle
+     * @param height the height of the rectangle
+     */
+    Rectangle(double width, double height) {
+        super(width, height);
+    }
+
+    /**
+     * Calculates the area.
+     * @return the area
+     */
     double area() {
         return getWidth() * getHeight();
     }
+
+    /**
+     * Evaluates if rectangle is a square.
+     * @return whether or not the rectangle is a square
+     */
     boolean isSquare() {
         return getWidth() == getHeight();
     }
@@ -26,5 +49,11 @@ public class Rectangle extends TwoDimShape {
         r2.showDims();
         System.out.println("area: " + r2.area());
         System.out.println("square? " + r2.isSquare());
+        // Using constructor with arguments
+        Rectangle r3 = new Rectangle(6.5,8);
+        System.out.println("Info about r3:");
+        r3.showDims();
+        System.out.println("area: " + r3.area());
+        System.out.println("square? " + r3.isSquare());
     }
 }
