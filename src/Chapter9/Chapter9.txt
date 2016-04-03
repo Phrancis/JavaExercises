@@ -2,4 +2,4 @@ Java
 A Beginner's Guide
 Sixth Edition
 
-Chapter8: Packages and Interfaces
+Chapter9: Exception Handling
