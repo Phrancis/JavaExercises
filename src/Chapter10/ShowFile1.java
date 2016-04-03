@@ -7,10 +7,9 @@ import java.io.*;
  * This opens and reads the file in separate blocks.
  */
 public class ShowFile1 {
-    public static void main(String[] args) throws IOException {
+    public static void showFile(String filePath) {
         int i;
         FileInputStream fileIn = null;
-        String filePath = "/Users/francisveilleux-gaboury/Documents/demo.txt";
 
         // Open file if it exists:
         try {
@@ -27,8 +26,9 @@ public class ShowFile1 {
                     System.out.print((char) i);
                 }
             } while (i != EOF);
+            System.out.println();
         }
-        catch(IOException exc) {
+        catch(IOException | NullPointerException exc) {
             System.out.println("Error reading file");
         }
         finally {
@@ -40,5 +40,9 @@ public class ShowFile1 {
             }
         }
 
+    }
+    public static void main(String[] args) throws IOException {
+        String filePath = "/Users/francisveilleux-gaboury/Documents/demo.txt";
+        ShowFile1.showFile(filePath);
     }
 }

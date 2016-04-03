@@ -4,17 +4,16 @@ import java.io.*;
 
 /**
  * Demonstrates displaying a text file.
- * This, unlike ShowFile1, open and reads file in same block.
+ * This, unlike ShowFile1 and ShowFile2, uses try-with-resources from JDK 7 to automatically close the file.
  */
-public class ShowFile2 {
+public class ShowFile3 {
     public static void showFile(String filePath) {
         int i;
-        FileInputStream fileIn = null;
 
-
-        try {
+        // This code uses try-with-resources to open a file
+        // and then automatically closes it when the try block is left:
+        try (FileInputStream fileIn = new FileInputStream(filePath)){
             // Open file if it exists:
-            fileIn = new FileInputStream(filePath);
             final int EOF = -1;
             // Read bytes until EOF is encountered:
             do {
@@ -31,17 +30,10 @@ public class ShowFile2 {
         catch(IOException exc) {
             System.out.println("Error reading file");
         }
-        finally {
-            // Close the file
-            try {
-                fileIn.close();
-            } catch (IOException | NullPointerException exc) {
-                System.out.println("Error closing file");
-            }
-        }
+        // No need for a finally block to close the file
     }
     public static void main(String[] args) throws IOException {
         String filePath = "/Users/francisveilleux-gaboury/Documents/demo.txt";
-        ShowFile2.showFile(filePath);
+        ShowFile3.showFile(filePath);
     }
 }
