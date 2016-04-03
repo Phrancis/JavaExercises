@@ -9,13 +9,15 @@ public class CircularCharQueue implements ICharQueue {
     private int getIx;
 
     CircularCharQueue(int size) {
+        // important to have one extra index for the real quantity to be as expected;
+        // since the putIx and getIx can only overlap when the queue is empty
         this.queue = new char[size + 1];
         this.putIx = this.getIx = 0;
     }
 
     @Override
     public void put(char ch) {
-        if(putIx == getIx - 1 | (putIx == queue.length - 1 & getIx == 0)) {
+        if(putIx == getIx - 1 | (putIx == queue.length - 1 && getIx == 0)) {
             System.out.println("Queue is full.");
             return;
         }

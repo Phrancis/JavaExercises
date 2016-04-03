@@ -15,5 +15,6 @@ public class DefaultMethodsDemo {
         System.out.printf("Demo DefaultMethodsB%n");
         b.implementMe();
         b.implementMeMaybe();
+
     }
 }
