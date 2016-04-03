@@ -1,7 +1,7 @@
 package Chapter8.Interfaces.CharQueue;
 
 /**
- * Demonstrate use of FixedCharQueue.
+ * Demonstrate use of ICharQueue and various implementations.
  */
 public class CharQueueDemo {
     public static void main(String[] args) {
