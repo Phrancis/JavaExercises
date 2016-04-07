@@ -1,4 +1,4 @@
-package Chapter1;
+package chapter01;
 /*
  * Prints the following output:
  * a is less than b

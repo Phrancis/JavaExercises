@@ -1,10 +1,10 @@
-package Chapter1;
+package chapter01;
 
 /**
  * Iterates through multiple gallon values and prints it with its liter conversion.
  */
 public class GallonToLiterTable {
-    public static void printTable (
+    private static void printTable(
             double min,
             double max,
             double incrementBetweenValues) {

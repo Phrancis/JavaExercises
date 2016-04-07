@@ -1,4 +1,4 @@
-package Chapter1;
+package chapter01;
 
 class ForDemo {
     private static void forLoopPrintVal(int start, int stop) {

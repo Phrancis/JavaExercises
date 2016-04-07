@@ -1,4 +1,4 @@
-package Chapter1;
+package chapter01;
 /*
  * Prints "Hello, Java!" to console.
  */

@@ -1,6 +1,6 @@
-package Chapter1;
+package chapter01;
 
-public class PowerOf {
+class PowerOf {
 	static double base;
 	static double exponent;
 	static double getResult() {
