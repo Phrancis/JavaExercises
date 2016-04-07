@@ -1,5 +1,0 @@
-Java
-A Beginner's Guide
-Sixth Edition
-
-Chapter9: Exception Handling

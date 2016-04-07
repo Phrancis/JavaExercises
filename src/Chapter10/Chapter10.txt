@@ -2,4 +2,4 @@ Java
 A Beginner's Guide
 Sixth Edition
 
-Chapter10: Using I/O
+chapter10: Using I/O

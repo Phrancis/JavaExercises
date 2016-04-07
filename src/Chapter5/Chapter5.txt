@@ -1,5 +1,0 @@
-Java
-A Beginner's Guide
-Sixth Edition
-
-Chapter5: More Data Types And Operators

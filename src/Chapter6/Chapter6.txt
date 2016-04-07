@@ -1,5 +1,0 @@
-Java
-A Beginner's Guide
-Sixth Edition
-
-Chapter6: A Closer Look at Methods and Classes
