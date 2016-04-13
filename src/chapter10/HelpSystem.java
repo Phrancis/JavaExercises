@@ -9,14 +9,31 @@ import java.io.InputStreamReader;
  * Help System using a text file as source.
  */
 public class HelpSystem {
-    private final char TITLE_LINE_MARKER = '#';
+    private char titleLineMarker;
     private final String STOP_WORD = "stop";
     private final String HELP_SYSTEM_FILE_PATH = "C:/git/JavaExercises/src/chapter10/HelpSystem.txt";
 
+    /**
+     * Default constructor assumes character '#' is assumed to be the
+     * line marker for titles/headers, according to standard Markdown syntax.
+     */
     public HelpSystem() {
+        titleLineMarker = '#';
         run();
     }
 
+    /**
+     * Alternate constructor with different line marker.
+     * @param titleLineMarker the marker character that marks a line as subtitle.
+     */
+    public HelpSystem(char titleLineMarker) {
+        this.titleLineMarker = titleLineMarker;
+        run();
+    }
+
+    /**
+     * Run the HelpSystem app.
+     */
     private void run() {
         String topic;
         System.out.printf("Try the help system. Enter \"%s\" to end.", STOP_WORD);
@@ -31,6 +48,9 @@ public class HelpSystem {
         } while(!isStop(topic));
     }
 
+    /**
+     * Reads the help topics based on the character provided as a marker for lines containing a header.
+     */
     private void readTopics() {
         System.out.println("Topics:");
         try(BufferedReader topicReader = new BufferedReader((new FileReader(HELP_SYSTEM_FILE_PATH)))) {
@@ -38,8 +58,8 @@ public class HelpSystem {
             final char NOTHING = '\0';
             do {
                 cursor = topicReader.read();
-                if(cursor == TITLE_LINE_MARKER) {
-                    System.out.println(" - " + topicReader.readLine().replace(TITLE_LINE_MARKER, NOTHING));
+                if(cursor == titleLineMarker) {
+                    System.out.println(" - " + topicReader.readLine().replace(titleLineMarker, NOTHING));
                 }
             } while(cursor != -1);
         } catch(IOException exc) {
@@ -47,14 +67,19 @@ public class HelpSystem {
         }
     }
 
+    /**
+     * Search for a help topic entered by user.
+     * @param what the help topic to search for
+     * @return whether the topic is found
+     */
     private boolean helpOn(String what) {
-        int ch = 0;
+        int ch;
         String topic;
         String info;
         try (BufferedReader helpReader = new BufferedReader((new FileReader(HELP_SYSTEM_FILE_PATH)))) {
             do {
                 ch = helpReader.read();
-                if(ch == TITLE_LINE_MARKER) {
+                if(ch == titleLineMarker) {
                     topic = helpReader.readLine();
                     if(what.compareTo(topic) == 0) { // found topic
                         do {
@@ -75,6 +100,10 @@ public class HelpSystem {
         return false;
     }
 
+    /**
+     * Attempt to find whether the topic the user entered exists.
+     * @return whether the topic the user entered exists
+     */
     private String getSelection() {
         String topic = "";
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -87,10 +116,15 @@ public class HelpSystem {
         return topic;
     }
 
+    /**
+     * Checks if the input matches the stop word.
+     * @param input the input to search for
+     * @return whether the input matches the stop word
+     */
     private boolean isStop(String input) {
         return input.toLowerCase().equals(STOP_WORD);
     }
-
+    // Test the class:
     public static void main(String[] args) {
         HelpSystem help = new HelpSystem();
     }
