@@ -9,43 +9,27 @@ import java.io.InputStreamReader;
  * Help System using a text file as source.
  */
 public class HelpSystem {
-    private char titleLineMarker;
+    /**
+     * Character '#' is assumed to be the line marker for titles/headers.
+     */
+    private final char TITLE_LINE_MARKERS = '#';
+
     private final String STOP_WORD = "stop";
     private final String HELP_SYSTEM_FILE_PATH = "C:/git/JavaExercises/src/chapter10/HelpSystem.txt";
 
-    /**
-     * Default constructor assumes character '#' is assumed to be the
-     * line marker for titles/headers, according to standard Markdown syntax.
-     */
-    public HelpSystem() {
-        titleLineMarker = '#';
-        run();
-    }
-
-    /**
-     * Alternate constructor with different line marker.
-     * @param titleLineMarker the marker character that marks a line as subtitle.
-     */
-    public HelpSystem(char titleLineMarker) {
-        this.titleLineMarker = titleLineMarker;
-        run();
-    }
+    private HelpSystem() { }
 
     /**
      * Run the HelpSystem app.
      */
     private void run() {
-        String topic;
-        System.out.printf("Try the help system. Enter \"%s\" to end.", STOP_WORD);
+        System.out.printf("Try the help system. Enter \"%s\" to end.%n", STOP_WORD);
         readTopics();
-        do {
-            topic = getSelection();
-            if (!isStop(topic)) {
-                if (!helpOn(topic)) {
-                    System.out.printf("Topic not found: %s%n", topic);
-                }
+        for(String topic; !isStop(topic = getSelection()); ) {
+            if (!helpOn(topic)) {
+                System.out.printf("Topic not found: %s%n", topic);
             }
-        } while(!isStop(topic));
+        }
     }
 
     /**
@@ -53,13 +37,14 @@ public class HelpSystem {
      */
     private void readTopics() {
         System.out.println("Topics:");
-        try(BufferedReader topicReader = new BufferedReader((new FileReader(HELP_SYSTEM_FILE_PATH)))) {
+        try(FileReader fr = new FileReader(HELP_SYSTEM_FILE_PATH);
+            BufferedReader topicReader = new BufferedReader(fr)) {
             int cursor;
             final char NOTHING = '\0';
             do {
                 cursor = topicReader.read();
-                if(cursor == titleLineMarker) {
-                    System.out.println(" - " + topicReader.readLine().replace(titleLineMarker, NOTHING));
+                if(cursor == TITLE_LINE_MARKERS) {
+                    System.out.println(" - " + topicReader.readLine().replace(TITLE_LINE_MARKERS, NOTHING));
                 }
             } while(cursor != -1);
         } catch(IOException exc) {
@@ -79,7 +64,7 @@ public class HelpSystem {
         try (BufferedReader helpReader = new BufferedReader((new FileReader(HELP_SYSTEM_FILE_PATH)))) {
             do {
                 ch = helpReader.read();
-                if(ch == titleLineMarker) {
+                if(ch == TITLE_LINE_MARKERS) {
                     topic = helpReader.readLine();
                     if(what.compareTo(topic) == 0) { // found topic
                         do {
@@ -127,5 +112,6 @@ public class HelpSystem {
     // Test the class:
     public static void main(String[] args) {
         HelpSystem help = new HelpSystem();
+        help.run();
     }
 }
