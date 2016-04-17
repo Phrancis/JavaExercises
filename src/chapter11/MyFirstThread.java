@@ -1,8 +1,7 @@
 package chapter11;
 
 /**
- * Simple use of a thread.
- * NOTE:
+ * Simple demonstration of a thread.
  */
 public class MyFirstThread implements Runnable {
     private String threadName;
@@ -12,17 +11,24 @@ public class MyFirstThread implements Runnable {
     }
 
     /**
-     *
+     * The general contract of the method run is that it may take any action whatsoever.
+     * Ref: https://docs.oracle.com/javase/7/docs/api/java/lang/Runnable.html
+     * An indentation is left in the print statements to differentiate it from the `main` thread's prints.
      */
     public void run() {
+        // marker for start of thread
         System.out.printf("  %s starting%n", threadName);
+
         // do something; this could be anything...
-        printAndWait(10, 400);
+        printAndWait(15, 300);
+
+        // marker for end of thread
         System.out.printf("  %s ending%n", threadName);
     }
 
     /**
      * Print numbers to stdout with a delay.
+     * An indentation is left in the print statements to differentiate it from the `main` thread's prints.
      * @param howMany the amount of number to print
      * @param waitMs the delay between printing numbers
      */
@@ -50,7 +56,8 @@ public class MyFirstThread implements Runnable {
         thread.start();
 
         /**
-         * Separate, independent thread `main`, printing numbers.
+         * Separate, independent thread `main`, also printing numbers.
+         * Notice in stdout how the 2 processes run independently of each other.
          */
         for(int i = 0; i < 50; i++) {
             System.out.printf("main i = %d%n", i);
