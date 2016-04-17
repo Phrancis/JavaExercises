@@ -4,10 +4,10 @@ package chapter11;
  * Simple demonstration of a thread.
  */
 public class MyFirstThread implements Runnable {
-    private String threadName;
+    private Thread thread;
 
-    private MyFirstThread(String threadName) {
-        this.threadName = threadName;
+    MyFirstThread(String threadName) {
+        thread = new Thread(this, threadName);
     }
 
     /**
@@ -17,13 +17,13 @@ public class MyFirstThread implements Runnable {
      */
     public void run() {
         // marker for start of thread
-        System.out.printf("  %s starting%n", threadName);
+        System.out.printf("  %s starting%n", thread.getName());
 
         // do something; this could be anything...
         printAndWait(15, 300);
 
         // marker for end of thread
-        System.out.printf("  %s ending%n", threadName);
+        System.out.printf("  %s ending%n", thread.getName());
     }
 
     /**
@@ -32,14 +32,14 @@ public class MyFirstThread implements Runnable {
      * @param howMany the amount of number to print
      * @param waitMs the delay between printing numbers
      */
-    private void printAndWait(int howMany, int waitMs) {
+    void printAndWait(int howMany, int waitMs) {
         try {
             for(int i = 0; i < howMany; i++) {
                 Thread.sleep(waitMs);
-                System.out.printf("  %s i = %d%n", threadName, i);
+                System.out.printf("  %s i = %d%n", thread.getName(), i);
             }
         } catch(InterruptedException exc) {
-            System.out.printf("  %s interrupted%n", threadName);
+            System.out.printf("  %s interrupted%n", thread.getName());
         }
     }
 
