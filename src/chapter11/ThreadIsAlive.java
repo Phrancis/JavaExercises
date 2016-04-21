@@ -7,9 +7,9 @@ public class ThreadIsAlive {
     public static void main(String[] args) {
         System.out.println("Main thread starting");
         // create 3 running threads
-        MultipleThreads t1 = new MultipleThreads("t1");
-        MultipleThreads t2 = new MultipleThreads("t2");
-        MultipleThreads t3 = new MultipleThreads("t3");
+        NumLoopThread t1 = new NumLoopThread(400, "t1");
+        NumLoopThread t2 = new NumLoopThread(400, "t2");
+        NumLoopThread t3 = new NumLoopThread(400, "t3");
 
         do {
             System.out.print(".");
