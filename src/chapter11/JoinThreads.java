@@ -2,7 +2,7 @@ package chapter11;
 
 /**
  * Companion to ThreadIsAlive class
- * Demonstrate use of Thread.isAlive() method to check whether a thread is still running.
+ * Demonstrate use of Thread.join() method to check whether a thread is still running.
  */
 public class JoinThreads {
     public static void main(String[] args) {
