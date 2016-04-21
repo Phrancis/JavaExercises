@@ -11,9 +11,9 @@ class NumLoopThread implements Runnable {
     Thread thread;
     private String threadName;
 
-    private static final int defaultSleepTime = 400;
+    private static final int DEFAULT_SLEEP_TIME = 400;
     private int sleepTime;
-    private static final int defaultNumLoops = 10;
+    private static final int DEFAULT_NUM_LOOPS = 10;
     private int numberLoops;
 
     /**
@@ -21,7 +21,7 @@ class NumLoopThread implements Runnable {
      * @param threadName the name of the thread
      */
     public NumLoopThread(String threadName) {
-        this(threadName, defaultSleepTime, defaultNumLoops);
+        this(threadName, DEFAULT_SLEEP_TIME, DEFAULT_NUM_LOOPS);
     }
     /**
      * Constructor.
@@ -29,7 +29,7 @@ class NumLoopThread implements Runnable {
      * @param sleepTime the number of milliseconds for the thread to sleep between iterations
      */
     public NumLoopThread(String threadName, int sleepTime) {
-        this(threadName, sleepTime, defaultNumLoops);
+        this(threadName, sleepTime, DEFAULT_NUM_LOOPS);
     }
     /**
      * Constructor.
@@ -59,5 +59,8 @@ class NumLoopThread implements Runnable {
             exc.printStackTrace();
         }
         System.out.printf("%s ending%n", threadName);
+    }
+    public String getThreadName() {
+        return threadName;
     }
 }
