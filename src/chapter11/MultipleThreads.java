@@ -9,9 +9,9 @@ public class MultipleThreads {
     public static void main(String[] args) {
         System.out.println("Main thread starting");
         // Build 3 separate threads
-        NumLoopThread t1 = new NumLoopThread(400, "t1");
-        NumLoopThread t2 = new NumLoopThread(400, "t2");
-        NumLoopThread t3 = new NumLoopThread(400, "t3");
+        NumLoopThread t1 = new NumLoopThread("t1", 400);
+        NumLoopThread t2 = new NumLoopThread("t2", 400);
+        NumLoopThread t3 = new NumLoopThread("t3", 400);
 
         for(int i = 0; i <50; i++) {
             System.out.printf(".");

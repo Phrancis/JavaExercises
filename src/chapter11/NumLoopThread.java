@@ -4,39 +4,54 @@ import java.lang.Thread;
 
 /**
  * Generic class that creates a thread and then loops and prints numbers to stdout.
+ * Improved after Code Review: http://codereview.stackexchange.com/questions/126289/thread-class-for-exercises/126290#126290
+ * Thx Mug
  */
-public class NumLoopThread implements Runnable {
+class NumLoopThread implements Runnable {
     Thread thread;
     private String threadName;
-    private int sleepTime = 400;
-    private int numLoops = 10;
 
-    /** Default constructor with threadName */
+    private static final int defaultSleepTime = 400;
+    private int sleepTime;
+    private static final int defaultNumLoops = 10;
+    private int numberLoops;
+
+    /**
+     * Constructor.
+     * @param threadName the name of the thread
+     */
     public NumLoopThread(String threadName) {
-        this.threadName = threadName;
-        thread = new Thread(this, threadName);
-        thread.start();
+        this(threadName, defaultSleepTime, defaultNumLoops);
     }
-    /** Extra constructor with threadName and sleepTime */
-    public NumLoopThread(int sleepTime, String threadName) {
+    /**
+     * Constructor.
+     * @param threadName the name of the thread
+     * @param sleepTime the number of milliseconds for the thread to sleep between iterations
+     */
+    public NumLoopThread(String threadName, int sleepTime) {
+        this(threadName, sleepTime, defaultNumLoops);
+    }
+    /**
+     * Constructor.
+     * @param threadName the name of the thread
+     * @param sleepTime the number of milliseconds for the thread to sleep between iterations
+     * @param numberLoops the number of iterations (or loops)
+     */
+    public NumLoopThread(String threadName, int sleepTime, int numberLoops) {
         this.sleepTime = sleepTime;
+        this.numberLoops = numberLoops;
         this.threadName = threadName;
         thread = new Thread(this, threadName);
         thread.start();
     }
-    /** Extra constructor with threadName, sleepTime, and numberLoops */
-    public NumLoopThread(int sleepTime, String threadName, int numberLoops) {
-        this.sleepTime = sleepTime;
-        this.threadName = threadName;
-        this.numLoops = numberLoops;
-        thread = new Thread(this, threadName);
-        thread.start();
-    }
-    /** Run the thread from start() */
+
+    /**
+     * Run the thread from start()
+     */
     public void run() {
         System.out.printf("%s starting%n", threadName);
         try {
-            for(int i = 0; i < numLoops; i++) {
+            for(int i = 0; i < numberLoops; i++) {
                 Thread.sleep(sleepTime);
                 System.out.printf("%s, i = %d%n", threadName, i);
             }
