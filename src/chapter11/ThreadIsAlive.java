@@ -7,10 +7,10 @@ package chapter11;
 public class ThreadIsAlive {
     public static void main(String[] args) {
         System.out.println("Main thread starting");
-        // create 3 running threads
-        NumLoopThread t1 = new NumLoopThread("t1", 400);
-        NumLoopThread t2 = new NumLoopThread("t2", 400);
-        NumLoopThread t3 = new NumLoopThread("t3", 400);
+        /* create 3 running threads */
+        NumLoopThread t1 = new NumLoopThread("t1");
+        NumLoopThread t2 = new NumLoopThread("t2");
+        NumLoopThread t3 = new NumLoopThread("t3");
 
         do {
             System.out.print(".");
@@ -19,7 +19,7 @@ public class ThreadIsAlive {
             } catch (InterruptedException exc) {
                 exc.printStackTrace();
             }
-        //wait until all threads terminate:
+        /* wait until all threads terminate: */
         } while (t1.thread.isAlive() ||
                  t2.thread.isAlive() ||
                  t3.thread.isAlive());
