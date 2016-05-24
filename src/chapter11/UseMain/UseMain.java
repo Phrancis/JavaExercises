@@ -6,26 +6,26 @@ package chapter11.UseMain;
  */
 public class UseMain {
     public static void main(String[] args) {
-        Thread thread;
+        Thread mainThread;
 
         // get the main thread:
-        thread = Thread.currentThread();
+        mainThread = Thread.currentThread();
 
         // display the thread's name:
-        System.out.printf("main thread is called: \"%s\"%n", thread.getName());
+        System.out.printf("main thread is called: \"%s\"%n", mainThread.getName());
 
         // display the main thread's priority:
-        System.out.printf("Priority: %s%n", thread.getPriority());
+        System.out.printf("Priority: %s%n", mainThread.getPriority());
 
         System.out.println();
 
         // set the name and priority:
         System.out.println("Setting thread name and priority...");
-        thread.setName("thread #1");
-        thread.setPriority(Thread.NORM_PRIORITY + 3);
+        mainThread.setName("thread #1");
+        mainThread.setPriority(Thread.NORM_PRIORITY + 3);
 
         // display results:
-        System.out.printf("main thread is now called: \"%s\"%n", thread.getName());
-        System.out.printf("Priority is now: %d%n", thread.getPriority());
+        System.out.printf("main thread is now called: \"%s\"%n", mainThread.getName());
+        System.out.printf("Priority is now: %d%n", mainThread.getPriority());
     }
 }
